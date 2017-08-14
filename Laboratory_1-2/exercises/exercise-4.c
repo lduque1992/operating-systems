@@ -6,18 +6,17 @@
 *
 * La  salida  debe  tener  la  siguiente  forma:
 *
-
-| Clasificación por edad | Edad en meses        |
--------------------------------------------------
-|      usted es un Adulto| Usted tiene 240 meses|
-
+* | Clasificación por edad | Edad en meses        |
+* -------------------------------------------------
+* |      usted es un Adulto| Usted tiene 240 meses|
+*
 * By: James Garzón Otálvaro
 */
 
 #include <stdio.h>
 
 char *getUserCategoryString(int age);
-int getMonthFromAge(int age);
+int getMonthsFromAge(int age);
 
 int main() {
     char titleClassification[] = "Clasificacion por edad";
@@ -27,7 +26,7 @@ int main() {
     printf("\n Ingrese su edad en años: ");
     scanf("%d", &age);
 
-    int months = getMonthFromAge(age);
+    int months = getMonthsFromAge(age);
 
 
     printf("\n|%-25s|%-25s|\n", titleClassification, titleAge);
@@ -61,6 +60,6 @@ char *getUserCategoryString(int age){
 * @param {int} age
 * @return {char}
 */
-int getMonthFromAge(int age){
+int getMonthsFromAge(int age){
     return age * 12;
 }
