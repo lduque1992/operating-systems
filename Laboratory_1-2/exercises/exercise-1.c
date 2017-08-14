@@ -1,6 +1,8 @@
 
-/* Diseñe un programa que lea un entero y determine si es par o impar.
-* La salida debe tener la siguiente forma
+/*
+* Diseñe un programa que lea un entero y determine si es par o impar.
+*
+* La salida debe tener la siguiente forma:
 * El número [...] es [par/impar].
 *
 * By: James Garzón Otálvaro
@@ -19,10 +21,10 @@ int main() {
 }
 
 /**
- * Return "Par" if the number is Even or "Impar" if is Odd
- * @param {int} number
- * @return {char}
- */
+* Return "Par" if the number is Even or "Impar" if is Odd
+* @param {int} number
+* @return {char}
+*/
 char *isEvenOrOdd(int number){
     const int numberModuleTwo = number%2;
 
