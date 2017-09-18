@@ -1,13 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-/* This program can create, multiply and print 2D-matrices*/
 
 /* Functions to provide */
 int** create_matrix(int order);
 void print_matrix(int** matrix, int order);
 void free_matrix(int**, int order);
 int** mult_matrix(int** m_A, int** m_B, int order);
+void fillMatrix(int** matrix, int order);
 
 int main(int argc, char *argv[]){
 
@@ -26,39 +26,45 @@ int main(int argc, char *argv[]){
 
   order = atoi(argv[1]);
 
-  printf("Creating Matrix A:\n");
+  printf("\nCreating Matrix A:\n");
   matrix_A = create_matrix(order);
+  fillMatrix(matrix_A, order);
   print_matrix(matrix_A, order);
-  // TODO: call function to create matrix_A
-  // TODO: call function to print matrix_A
 
-  printf("Creating Matrix B:\n");
+  printf("\nCreating Matrix B:\n");
   matrix_B = create_matrix(order);
+  fillMatrix(matrix_B, order);
   print_matrix(matrix_B, order);
-  // TODO: call function to create matrix_B
-  // TODO: call function to print matrix_B
 
-  printf("Multiplying Matrices A * B:\n");
+  printf("\nMultiplying Matrices A * B:\n");
   matrix_R = mult_matrix(matrix_A, matrix_B, order);
-  print_matrix(matrix_B, order);
-  // TODO: call function to multiply A * B
-  // TODO: call function to print result R
+  print_matrix(matrix_R, order);
 
-  printf("freeing memory...\n");
-  // TODO: call function to free matrices memory
+  printf("\nfreeing memory...\n");
+  free_matrix(matrix_A, order);
+  free_matrix(matrix_B, order);
+  free_matrix(matrix_R, order);
   return 0;
+}
+
+void fillMatrix(int** matrix, int order){
+  for (int i = 0; i < order; i++) {
+    for (int j = 0; j < order; j++) {
+      printf("Enter value of matrix[%d][%d]: ",i,j );
+      scanf("%d", &matrix[i][j]);
+    }
+  }
 }
 
 int** create_matrix(int order){
   int** matrix = malloc(sizeof(int*)*order);
-
   for (int i = 0; i < order; i++) {
     matrix[i] = (int*) malloc(sizeof(int)*order);
   }
 
   for (int i = 0; i < order; i++) {
     for (int j = 0; j < order; j++) {
-      matrix[i][j] = 2;
+      matrix[i][j] = 0;
     }
   }
   return matrix;
@@ -77,25 +83,22 @@ void print_matrix(int** matrix, int order){
 }
 
 void free_matrix(int** matrix, int order){
-  // TODO: use free() to free matrix's memory
-  printf("In free_matrix\n");
+  free (matrix);
 }
 
 int** mult_matrix(int** m_A, int** m_B, int order){
-  // TODO: create memory to result matrix
-  // TODO: Multiply matrices
-  int** m_R;
+  int** m_R = malloc(sizeof(int*)*order);
   int value = 0;
   m_R = create_matrix(order);
   printf("In mult_matrix\n");
 
   for (int i = 0; i < order; i++) {
-    value = 0;
     for (int j = 0; j < order; j++) {
-      value = value + (m_A[i][j] * m_B[j][i]);
+      value = 0;
       for (int k = 0; k < order; k++) {
-
+        value = value + m_A[i][k] * m_B[k][j];
       }
+      m_R[i][j] = value;
     }
   }
 
