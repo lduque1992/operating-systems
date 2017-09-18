@@ -21,12 +21,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-int getNumbers(int *values);
-void printNumbers(int *values);
+int getNumbers(float *values);
+// void printNumbers(int *values);
 float getMean(int *values, int size);
 
 int main() {
-  int a[10];
+  float a[10];
   int numbersSize = 0;
   float mean = 0;
   // int max = 0;
@@ -40,7 +40,7 @@ int main() {
   return 0;
 }
 
-int getNumbers(int *values) {
+int getNumbers(float *values) {
   char input[50];
   int i = 0;
   int flag = 0;
@@ -50,7 +50,7 @@ int getNumbers(int *values) {
     if (strcmp("x",input) == 0){
       flag = 1;
     }else {
-      values[i] = atoi(input);
+      values[i] = atof(input);
     }
     i++;
   }
@@ -61,14 +61,14 @@ int getNumbers(int *values) {
   }
 }
 
-void printNumbers(int *values){
-  int i = 0;
-  printf("\nArray values:\n");
-  do {
-    printf("%d\n", values[i]);
-    i++;
-  } while(i<10);
-}
+// void printNumbers(int *values){
+//   int i = 0;
+//   printf("\nArray values:\n");
+//   do {
+//     printf("%d\n", values[i]);
+//     i++;
+//   } while(i<10);
+// }
 
 float getMean(int *values, int size){
   int i = 0;
