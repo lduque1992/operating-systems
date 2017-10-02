@@ -4,8 +4,19 @@
 #include "parser.c"
 #include <unistd.h>
 #include <dirent.h>
+#include <sys/types.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+#include <stdio.h> 
 
+
+#define _POSIX_SOURCE
 #define TAM 100
+#undef _POSIX_SOURCE
 
 void showInitialMessage();
 int show_prompt();
